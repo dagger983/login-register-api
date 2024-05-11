@@ -4,11 +4,11 @@ const path = require("path");
 const sqlite3 = require("sqlite3");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-require('dotenv').config(); // Load environment variables from .env file
+
 
 const app = express();
-const dbPath = path.join(__dirname, process.env.DB_FILE || "login.db");
-const secretKey = process.env.SECRET_KEY || "your-secret-key";
+const dbPath = path.join(__dirname, "login.db");
+const secretKey =  "your-secret-key";
 
 let db = null;
 
@@ -19,7 +19,7 @@ const initializeDBandServer = async () => {
         db = new sqlite3.Database(dbPath);
         createTable();
         app.listen(process.env.PORT || 1406, () => {
-            console.log("Server running on port", process.env.PORT || 1406);
+            console.log("Server running on port", 1406);
         });
     } catch (e) {
         console.log(`DB_ERROR : ${e.message}`);
