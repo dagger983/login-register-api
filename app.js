@@ -5,6 +5,7 @@ const sqlite3 = require("sqlite3");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const cors = require('cors');
 
 const app = express();
 const dbPath = path.join(__dirname, "login.db");
@@ -13,6 +14,7 @@ const secretKey =  "your-secret-key";
 let db = null;
 
 app.use(bodyParser.json());
+app.use(cors()); // Add CORS middleware
 
 const initializeDBandServer = async () => {
     try {
